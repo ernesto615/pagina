@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Landing page - Práctica UMG</title>
+    <title>Landing page - Práctica UMG</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <!-- 1. Header / Navegacion-->
+    <!-- 1. Header / Navegación -->
     <header class="header">
-        <div class="logo">MiMarca</div>
-        <img src="C:\Users\umg.LABJOC\Desktop\Landing_page\logoUsac.jpg" alt="Imagen Usac">
+        <div class="marca">
+            <img src="logoUsac.jpg" alt="Logo Usac" class="logo-img">
+            <div class="logo">MiMarca</div>
+        </div>
         <nav class="nav">
             <a href="#servicios">Servicios</a>
             <a href="#simulador">Simulador</a>
@@ -24,19 +26,137 @@
         <!-- 2. Sección Hero -->
         <section class="hero">
             <h1>Construimos soluciones digitales</h1>
-            <p>Ayudamos a tu negocio a creccer con tecnología de vanguardia</p>
+            <p>Ayudamos a tu negocio a crecer con tecnología de vanguardia</p>
 
-            <!-- Botón que activa el Modal-->
-            <button id="btn-abrir-modal" class="btn-cta">
+            <!-- Botón que activa el Modal -->
+            <button id="btn-abrir-modal" class="btn-cta" type="button">
                 ▶ Ver Tutorial en Video
             </button>
         </section>
 
+        <!-- 3. Servicios -->
+        <section id="servicios" class="seccion">
+            <h2>Nuestros servicios</h2>
+            <p class="subtitulo">Todo lo que tu negocio necesita para estar en línea.</p>
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <div class="icono">🌐</div>
+                    <h3>Páginas web</h3>
+                    <p>Sitios modernos, rápidos y adaptados a celulares.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="icono">⚙️</div>
+                    <h3>Sistemas a medida</h3>
+                    <p>Aplicaciones con backend y base de datos para tu operación.</p>
+                </article>
+                <article class="tarjeta">
+                    <div class="icono">💳</div>
+                    <h3>Pagos en línea</h3>
+                    <p>Integración con pasarelas de pago para cobrar de forma segura.</p>
+                </article>
+            </div>
+        </section>
 
-        <!-- Aquí seguirán las demás secciones-->
+        <!-- 4. Simulador de cotización -->
+        <section id="simulador" class="seccion seccion-gris">
+            <h2>Simulador de cotización</h2>
+            <p class="subtitulo">Elige un servicio y calcula un precio estimado al instante.</p>
+
+            <form id="form-simulador" class="simulador" novalidate>
+                <label for="sim-servicio">Servicio</label>
+                <select id="sim-servicio">
+                    <option value="800">Página web (Q800 base)</option>
+                    <option value="2500">Sistema a medida (Q2,500 base)</option>
+                    <option value="1200">Pagos en línea (Q1,200 base)</option>
+                </select>
+
+                <label for="sim-secciones">Cantidad de secciones o módulos</label>
+                <input type="number" id="sim-secciones" min="1" max="50" value="3">
+
+                <label class="check">
+                    <input type="checkbox" id="sim-urgente">
+                    Entrega urgente (+20%)
+                </label>
+
+                <p class="error" id="sim-error" role="alert"></p>
+
+                <div class="resultado">
+                    Total estimado: <strong id="sim-total">Q0.00</strong>
+                </div>
+            </form>
+        </section>
+
+        <!-- 5. Herramientas (pestañas) -->
+        <section id="herramientas" class="seccion">
+            <h2>Herramientas que usamos</h2>
+            <p class="subtitulo">Tecnologías por cada capa del proyecto.</p>
+
+            <div class="tabs" role="tablist" aria-label="Herramientas">
+                <button class="tab activa" role="tab" data-tab="front" aria-selected="true" type="button">Frontend</button>
+                <button class="tab" role="tab" data-tab="back" aria-selected="false" type="button">Backend</button>
+                <button class="tab" role="tab" data-tab="deploy" aria-selected="false" type="button">Despliegue</button>
+            </div>
+
+            <div class="panel activo" id="panel-front" role="tabpanel">
+                <ul>
+                    <li>HTML5 y CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Diseño responsivo</li>
+                </ul>
+            </div>
+            <div class="panel" id="panel-back" role="tabpanel">
+                <ul>
+                    <li>Node.js y Express</li>
+                    <li>PostgreSQL con Sequelize</li>
+                    <li>Stripe para pagos</li>
+                </ul>
+            </div>
+            <div class="panel" id="panel-deploy" role="tabpanel">
+                <ul>
+                    <li>GitHub</li>
+                    <li>Render</li>
+                    <li>Neon (base de datos)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6. Contacto -->
+        <section id="contacto" class="seccion seccion-gris">
+            <h2>Contáctanos</h2>
+            <p class="subtitulo">Cuéntanos sobre tu proyecto y te respondemos pronto.</p>
+
+            <form id="form-contacto" class="formulario" novalidate>
+                <label for="c-nombre">Nombre</label>
+                <input type="text" id="c-nombre" name="nombre" autocomplete="name">
+                <span class="error" data-error-for="c-nombre"></span>
+
+                <label for="c-correo">Correo</label>
+                <input type="email" id="c-correo" name="correo" autocomplete="email">
+                <span class="error" data-error-for="c-correo"></span>
+
+                <label for="c-mensaje">Mensaje</label>
+                <textarea id="c-mensaje" name="mensaje" rows="4"></textarea>
+                <span class="error" data-error-for="c-mensaje"></span>
+
+                <button type="submit" class="btn-cta">Enviar mensaje</button>
+                <p class="exito" id="c-exito" role="status"></p>
+            </form>
+        </section>
     </main>
-    <script srs="script.js"></script>
 
+    <footer class="footer">
+        <p>© 2026 MiMarca · Práctica UMG</p>
+    </footer>
+
+    <!-- Modal del video tutorial -->
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+            <button id="btn-cerrar-modal" class="modal-cerrar" type="button" aria-label="Cerrar">✕</button>
+            <h2 id="modal-titulo">Tutorial en video</h2>
+            <div class="video" id="video-contenedor"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
-
